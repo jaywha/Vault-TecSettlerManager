@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Vault_TecSettlerManager.UserControls.SpecialStatControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:Vault_TecSettlerManager.UserControls"
+             mc:Ignorable="d" 
+             x:Name="uccSpecialStat"
+             d:DesignHeight="115" d:DesignWidth="150">
+    <UserControl.Resources>
+        <Style x:Key="specialStatTextBlock" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Viewbox>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60*" />
+            <ColumnDefinition Width="40*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center">
+            <TextBlock x:Name="txtStatLetter" 
+                       Text="{Binding ElementName=uccSpecialStat, Path=SpecialLetter, Mode=TwoWay, FallbackValue=S}"
+                       Style="{StaticResource specialStatTextBlock}"/>
+            <md:PackIcon x:Name="iconPackKind" Width="64" Height="64"
+                        Kind="{Binding ElementName=uccSpecialStat, Path=SpecialIconKind, Mode=TwoWay}" />
+        </StackPanel>
+        <TextBlock x:Name="txtCurrentModifierValue" 
+                   Text="{Binding ElementName=uccSpecialStat, Path=CurrentModifer, Mode=TwoWay, FallbackValue=0}"
+                Style="{StaticResource specialStatTextBlock}" />
+        <TextBlock x:Name="txtCurrentValue"
+                   Text="{Binding ElementName=uccSpecialStat, Path=CurrentValue, Mode=TwoWay, FallbackValue=0}"
+                   Style="{StaticResource specialStatTextBlock}"
+                   Grid.Row="1"  />
+    </Grid>
+    </Viewbox>
+</UserControl>
